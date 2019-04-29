@@ -181,7 +181,7 @@ function SearchAppBar(props) {
       <div className={classes.root}>
       
       <Grid container spacing={10}>
-      <Typography>Map overview</Typography>
+      
         <Grid item xs>
           <Table className={classes.table}>
         
