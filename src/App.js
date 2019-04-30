@@ -7,24 +7,13 @@ import Typography from '@material-ui/core/Typography';
 import InputBase from '@material-ui/core/InputBase';
 import { fade } from '@material-ui/core/styles/colorManipulator';
 import { withStyles } from '@material-ui/core/styles';
-import Table from '@material-ui/core/Table';
-import TableBody from '@material-ui/core/TableBody';
-import TableCell from '@material-ui/core/TableCell';
-import TableHead from '@material-ui/core/TableHead';
 import Link from '@material-ui/core/Link';
-import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
-
-const CustomTableCell = withStyles(theme => ({
-  head: {
-    backgroundColor: theme.palette.common.black,
-    color: theme.palette.common.white,
-  },
-  body: {
-    fontSize: 14,
-  },
-}))(TableCell);
+import Card from '@material-ui/core/Card';
+import CardMedia from '@material-ui/core/CardMedia';
+import CardActionArea from '@material-ui/core/CardActionArea';
+import CardContent from '@material-ui/core/CardContent';
 
 
 const styles = theme => ({
@@ -40,6 +29,9 @@ const styles = theme => ({
     textAlign: 'center',
     color: theme.palette.text.secondary,
   },
+  grid:{
+    marginRight:70,
+  },
   gridList: {
     flexWrap: 'nowrap',
     // Promote the list into his own layer on Chrome. This cost memory but helps keeping high FPS.
@@ -48,6 +40,7 @@ const styles = theme => ({
   },
   grow: {
     flexGrow: 1,
+    
   },
   menuButton: {
     marginLeft: -12,
@@ -58,9 +51,22 @@ const styles = theme => ({
     alignItems:'right',
     marginLeft:60,
   },
+  card: {
+    maxWidth: 345,
+    marginLeft:52,
+    width:'100%',
+    
+  },
+  media: {
+    // ⚠️ object-fit is not supported by IE 11.
+    objectFit: 'cover',
+    
+    
+  },
   row: {
     '&:nth-of-type(odd)': {
       backgroundColor: theme.palette.background.default,
+      paddingTop: theme.spacing.unit*5,
     },
   },
   title: {
@@ -104,6 +110,10 @@ const styles = theme => ({
  input:{
    display:'none',
  },
+ heading:{
+  paddingTop: theme.spacing.unit*5,
+  textAlign: 'center',
+},
   inputInput: {
     paddingTop: theme.spacing.unit,
     paddingRight: theme.spacing.unit,
@@ -119,17 +129,9 @@ const styles = theme => ({
     },
   },
 });
-let id = 0;
-function createData(name, calories, fat) {
-  id += 1;
-  return { id, name, calories, fat};
-}
-const rows = [
-  createData('Frozen yoghurt', 159),
-  createData('Ice cream sandwich', 237),
-  createData('Eclair', 262),
-];
-const dudUrl = 'javascript:;';
+
+
+
 function AutoGrid(props) {
   const { classes } = props;
 }
@@ -146,21 +148,14 @@ function SearchAppBar(props) {
           </Typography>
           
       <Typography  className={classes.button} variant="h6" color="inherit" noWrap>
-      <Link href={dudUrl} color="inherit" className={classes.link}>
-        {'Home'}
+      <Link href="/Borla" color="inherit" className={classes.link}>
+        {'Data Analysis'}
       </Link>
       </Typography>
       <Typography className={classes.button} variant="h6" color="inherit">
-      <Link href={dudUrl} color="inherit" className={classes.link}>
-        {'Contact'}
-      </Link>
+      
       </Typography>
-      <Typography className={classes.button} variant="h6" color="inherit">
-      <Link href={dudUrl} color="inherit" className={classes.link}>
-        {'About'}
-      </Link>
-      </Typography>
-       
+      
           <div className={classes.grow} />
           <div className={classes.search}>
             <div className={classes.searchIcon}>
@@ -175,57 +170,78 @@ function SearchAppBar(props) {
             />
           </div>
         </Toolbar>
-      
     <Paper className={classes.root}>
       
       <div className={classes.root}>
+      <Typography className={classes.heading} variant="h6">A Data Visualization Platform For Ghana Waste Management</Typography>
       
-      <Grid container spacing={10}>
       
-        <Grid item xs>
-          <Table className={classes.table}>
-        
-        <TableHead>
-          <TableRow>
-            <CustomTableCell>Name of Town</CustomTableCell>
-            <CustomTableCell align="right">No. Of Reports</CustomTableCell>
-           
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {rows.map(row => (
-            <TableRow className={classes.row} key={row.id}>
-              <CustomTableCell component="th" scope="row">
-                {row.name}
-              </CustomTableCell>
-              <CustomTableCell align="right">{row.calories}</CustomTableCell>
-               
-            </TableRow>
-          ))}
-        </TableBody>
-      </Table>
+      
+      <Grid container className={classes.grid} spacing={24}>
+      
+        <Grid item xs={24}>
+        <Card className={classes.card}>
+      <CardActionArea>
+        <CardMedia
+          component="img"
+          alt="Contemplative Reptile"
+          className={classes.media}
+          height="140"
+          image="https://thumbs.gfycat.com/LankySlushyApe-size_restricted.gif"
+          title="Contemplative Reptile"
+        />
+        <CardContent>
+          <Typography gutterBottom variant="h5" component="h2">
+            Lizard
+          </Typography>
+          <Typography component="p">
+            Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging
+            across all continents except Antarctica
+          </Typography>
+        </CardContent>
+      </CardActionArea>
+      
+    </Card>
+      <Card className={classes.card}>
+        <CardMedia
+          className={classes.media}
+          image="/static/images/cards/contemplative-reptile.jpg"
+          title="Contemplative Reptile"
+        />
+      </Card>
+
         </Grid>
         <Grid item xs>
-        <Typography>Map overview</Typography>
-        <Table className={classes.table}>
-        <TableHead>
-          <TableRow>
-            <CustomTableCell>Dessert (100g serving)</CustomTableCell>
-            <CustomTableCell align="right">Calories</CustomTableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {rows.map(row => (
-            <TableRow className={classes.row} key={row.id}>
-              <CustomTableCell component="th" scope="row">
-                {row.name}
-              </CustomTableCell>
-              <CustomTableCell align="right">{row.calories}</CustomTableCell>
-               
-            </TableRow>
-          ))}
-        </TableBody>
-      </Table>
+        
+        <Card className={classes.card}>
+      <CardActionArea>
+        <CardMedia
+          component="img"
+          alt="Contemplative Reptile"
+          className={classes.media}
+          height="140"
+          image="https://thumbs.gfycat.com/HonoredFrailKrill-size_restricted.gif"
+          title="Contemplative Reptile"
+        />
+        <CardContent>
+          <Typography gutterBottom variant="h5" component="h2">
+            Lizard
+          </Typography>
+          <Typography component="p">
+            Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging
+            across all continents except Antarctica
+          </Typography>
+        </CardContent>
+      </CardActionArea>
+      
+    </Card>
+      <Card className={classes.card}>
+        <CardMedia
+          className={classes.media}
+          image="/static/images/cards/contemplative-reptile.jpg"
+          title="Contemplative Reptile"
+        />
+      </Card>
         </Grid>
         
       </Grid>
@@ -256,4 +272,3 @@ AutoGrid.propTypes = {
 
 
 export default withStyles(styles)(SearchAppBar);
-
